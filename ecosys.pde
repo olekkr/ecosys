@@ -8,7 +8,7 @@ int EntCount = 0;
 
 
 void setup() {
-  PA = new PlayArea(100, 10, 1);
+  PA = new PlayArea(100, 20, 2);
   size(800, 800);
 
   frameRate(60);

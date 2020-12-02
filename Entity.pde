@@ -33,9 +33,7 @@ class Entity {
 
   void CheckPulls () {
     for (Entity e : world.Entities) {
-      
-      //println("fart");
-      if ((pos.dist(e.pos) > e.pullDist/2 + pullDist/2) && e!= this) {
+      if ((pos.dist(e.pos) < e.pullDist/2 + pullDist/2) && e!= this) {
         e.Pull(this);
       }
     }
@@ -63,7 +61,7 @@ class Entity {
   }
 
   void slow() {
-    if (vel.mag() > 2) {
+    if (vel.mag() > 2.5) {
       vel.mult(0.993);
     }
   }

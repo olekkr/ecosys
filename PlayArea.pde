@@ -1,6 +1,7 @@
 class PlayArea {
   LinkedList<Entity> Entities;
   float[] bounds = {10, 10, width-10, height-10};
+  LinkedList<Entity> AddNext = new LinkedList<Entity>();
 
   PlayArea(int plants, int herbivores, int carnivores ) {
     // ---- Plants
@@ -32,8 +33,8 @@ class PlayArea {
   }
 
   void Run() {
-    if (Entities.size() < 500) {
-      //spawnPlants(1);
+    if (Entities.size() < 200) {
+      spawnPlants(1);
     }
 
     for (Entity e : Entities) {
@@ -45,6 +46,8 @@ class PlayArea {
       e.slow();
     }
     cleanEntites();
+    
+    DmgAll(frameCount % 60 == 0 ? 1: 0);
   }
   void spawnPlants (int n) {
     for (int i=0; i < n; i++) {
@@ -54,6 +57,19 @@ class PlayArea {
         random(bounds[1], bounds[3])));
     }
   }
+  
+  void DmgAll(int dmg){
+    if(dmg < 0){
+      return;
+    }
+    for(Entity e : Entities){
+      e.HP = e.HP - dmg;
+      if(e.HP < 1){
+        e.clearNextFrame = true;
+      }
+    }
+  }
+  
   void cleanEntites() {
     Iterator iter = Entities.iterator();
     Entity e;
@@ -64,5 +80,12 @@ class PlayArea {
         iter.remove();
       }
     }
+    Entity ee;
+    Iterator it = AddNext.iterator();
+    while (it.hasNext()) {
+      ee = (Entity) it.next() ;
+      Entities.add(ee);
+    }
+    AddNext.clear();
   }
 }
