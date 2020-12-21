@@ -24,8 +24,8 @@ class Entity {
   }
 
   void Move() {
-    vel.x *= pos.x <= world.bounds[0] || pos.x >= world.bounds[2] ? -1 : 1;
-    vel.y *= pos.y <= world.bounds[1] || pos.y >= world.bounds[3] ? -1 : 1;
+    vel.x *= pos.x - size/2 < world.bounds[0] || pos.x + size/2 > world.bounds[2] ? -1 : 1;
+    vel.y *= pos.y  - size/2 < world.bounds[1] || pos.y + size/2 > world.bounds[3] ? -1 : 1;
 
     pos.x += vel.x;
     pos.y += vel.y;
@@ -67,5 +67,15 @@ class Entity {
   }
 
   void Pull(Entity e) {
+  }
+
+
+  void AddHP(int amount){
+    if(amount + HP > MaxHP){
+      HP = MaxHP;
+    }
+    else{
+      HP += amount;
+    }
   }
 }

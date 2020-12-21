@@ -33,8 +33,8 @@ class PlayArea {
   }
 
   void Run() {
-    if (Entities.size() < 200) {
-      spawnPlants(1);
+    if (Entities.size() < 2000) {
+      spawnPlants(2);
     }
 
     for (Entity e : Entities) {
@@ -47,7 +47,6 @@ class PlayArea {
     }
     cleanEntites();
     
-    DmgAll(frameCount % 60 == 0 ? 1: 0);
   }
   void spawnPlants (int n) {
     for (int i=0; i < n; i++) {
@@ -58,17 +57,8 @@ class PlayArea {
     }
   }
   
-  void DmgAll(int dmg){
-    if(dmg < 0){
-      return;
-    }
-    for(Entity e : Entities){
-      e.HP = e.HP - dmg;
-      if(e.HP < 1){
-        e.clearNextFrame = true;
-      }
-    }
-  }
+  
+  
   
   void cleanEntites() {
     Iterator iter = Entities.iterator();
@@ -76,7 +66,6 @@ class PlayArea {
     while (iter.hasNext()) {
       e = (Entity)iter.next();
       if (e.clearNextFrame) {
-        EntCount--;
         iter.remove();
       }
     }

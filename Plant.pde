@@ -19,7 +19,15 @@ class Plant extends Entity {
     circle(pos.x, pos.y, 10);
   }
 
+
+  // optimizations:
   @Override
     void Move() {
+  }
+  @Override
+    void CheckPulls() {
+  }
+  @Override
+    void CheckCollisions() {
   }
 }

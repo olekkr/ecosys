@@ -23,14 +23,13 @@ class Herbivore extends Entity {
       PVector collisionDir = e.pos.copy().sub(pos);
       PVector impVect = collisionDir.copy().setMag(-1).mult(mass);
       AddImpuls(impVect);
-      
-        if (HP == MaxHP && e.HP == e.MaxHP){
-          world.AddNext.add(new Herbivore(world, pos.x, pos.y, vel.x *-1, vel.y *-1));
-          HP =1 ;
-          e.HP =1;
-        }
+
+      if (HP == MaxHP && e.HP == e.MaxHP) {
+        world.AddNext.add(new Herbivore(world, pos.x, pos.y, vel.x *-1, vel.y *-1));
+        HP =1 ;
+        e.HP =1;
+      }
     }
-    
   }
 
   @Override
