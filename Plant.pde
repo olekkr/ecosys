@@ -12,14 +12,6 @@ class Plant extends Entity {
     mass = 0.3;
   }
 
-  @Override
-    void Render() {
-    noStroke();
-    fill(clr);
-    circle(pos.x, pos.y, 10);
-  }
-
-
   // optimizations:
   @Override
     void Move() {

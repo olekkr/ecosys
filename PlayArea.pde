@@ -1,6 +1,6 @@
 class PlayArea {
   LinkedList<Entity> Entities;
-  float[] bounds = {10, 10, width-10, height-10};
+  float[] bounds = {0, 0, width, height};
   LinkedList<Entity> AddNext = new LinkedList<Entity>();
 
   PlayArea(int plants, int herbivores, int carnivores ) {

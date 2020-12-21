@@ -19,7 +19,6 @@ class Herbivore extends Entity {
       HP += HP < MaxHP ? 1 : 0;
     }
     if (e instanceof Herbivore) {
-      //https://matbhtx.systime.dk/index.php?id=111
       PVector collisionDir = e.pos.copy().sub(pos);
       PVector impVect = collisionDir.copy().setMag(-1).mult(mass);
       AddImpuls(impVect);
@@ -35,7 +34,6 @@ class Herbivore extends Entity {
   @Override
     void Pull(Entity e) {
     if (e instanceof Carnivore) {
-      //https://matbhtx.systime.dk/index.php?id=111
       PVector collisionDir = e.pos.copy().sub(pos);
       PVector impVect = collisionDir.copy().setMag(-0.25);
       AddImpuls(impVect);

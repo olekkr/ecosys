@@ -2,7 +2,6 @@ class Entity {
   PVector pos = new PVector(); 
   PVector vel = new PVector();
   PlayArea world;
-  int ticks = 0;
   int HP;
   int MaxHP;
   float size;
@@ -25,7 +24,7 @@ class Entity {
 
   void Move() {
     vel.x *= pos.x - size/2 < world.bounds[0] || pos.x + size/2 > world.bounds[2] ? -1 : 1;
-    vel.y *= pos.y  - size/2 < world.bounds[1] || pos.y + size/2 > world.bounds[3] ? -1 : 1;
+    vel.y *= pos.y - size/2 < world.bounds[1] || pos.y + size/2 > world.bounds[3] ? -1 : 1;
 
     pos.x += vel.x;
     pos.y += vel.y;
@@ -52,7 +51,6 @@ class Entity {
   }
 
   void Update() {
-    ticks += 1;
   }
 
   void AddImpuls(PVector imp) {
